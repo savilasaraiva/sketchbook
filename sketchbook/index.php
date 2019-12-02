@@ -274,9 +274,6 @@
   <!-- Plugin AWS -->
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.579.0.min.js"></script>
   <script src="./assets/js/plugins/awsJS.js"></script>
-  <script>
-    listAlbums();
-  </script>
 </body>
 
 </html>

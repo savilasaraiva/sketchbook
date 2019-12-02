@@ -1,76 +1,77 @@
 <?php
-	if(isset($_SESSION['authentication'])){
-        ?>
-		
-        
-	<?php }else{
-	
-		if(isset($_POST['submit'])){
-		
-			$postedUsername = $_POST['ig']; //Gets the posted username, put's it into a variable.
-            $postedPassword = $_POST['senha']; //Gets the posted password, put's it into a variable.
-            require 'config.php'; 
-             $perfil = $collection -> find(array('ig' => $postedUsername));	
-				//Iterates through the found results
-				foreach($perfil as $userFind) {
-				    $storedUsername = $userFind['ig'];
-				    $storedPassword = $userFind['senha'];
-				}
-	
-				if($postedUsername == $storedUsername && $postedPassword == $storedPassword){ 
-                    $_SESSION['authentication'] = 1;
-                    //$_SESSION['success'] = "Book created successfully";
-                     header("Location: index.php");
-                    	
-				}else{
-					
-                    $wrongflag = 1;
-                    $_SESSION['error'] = "deu merda";
-                    
-				}
-				
-			}else{
+  session_start();
+  if (isset($_SESSION['msg'])):
+      echo $_SESSION['msg'];
+  endif;
+?>
 
-            }
-        }
-?>
-<?php
-   if(isset($_SESSION['error'])){
-      echo "<div class = 'alert alert-danger'>".$_SESSION['error']."</div>";
-   }
-?>
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
+
 <head>
-   <title> Inicial </title>
-   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <title>
+    Material Kit by Creative Tim
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="./assets/css/material-kit.css?v=2.0.6" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="./assets/demo/demo.css" rel="stylesheet" />
 </head>
-<body>
-    <div class="container">
-        <div class="container">    
-            <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="panel-title">Login</div>
-                    </div>
-                    <form method="POST">
-                        <div class="form-group">
-                            <label for="email">Email ou ig</label>
-                            <input type="text" class="form-control" name="ig" id="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="senha">Senha</label>
-                            <input type="password" class="form-control" name="senha" id="senha">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" name="submit" class="btn btn-success">Entrar</button>
-                        </div>
-                    </form>
-                    <a href = "cadPerfil.php" class = "btn btn-success"> Cadastrar </a> 
+
+    <body class="login-page sidebar-collapse">
+    <div class="page-header header-filter" style="background-image: url('./assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+            <div class="card card-login">
+                <form class="form" method="" action="">
+                <div class="card-header card-header-primary text-center">
+                    <h4 class="card-title">Login</h4>
                 </div>
+                <p class="description text-center">Sketchbook</p>
+                <div class="card-body">
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                        <i class="material-icons">person</i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Usuário">
+                    </div>
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                        </span>
+                    </div>
+                    <input type="password" class="form-control" placeholder="Senha">
+                    </div>
+                </div>
+                <div class="footer text-center">
+                    <a href="#pablo" class="btn btn-primary btn-link btn-wd btn-lg">Entrar</a>
+                </div>
+                </form>
+            </div>
             </div>
         </div>
+        </div>
+        <footer class="footer">
+        <div class="container">
+            <div class="copyright float-center">
+            &copy;
+            <script>
+                document.write(new Date().getFullYear())
+            </script>, feito com <i class="material-icons">favorite</i> por
+            <a href="#DJS" target="_blank">DJS</a>.
+            </div>
+        </div>
+        </footer>
     </div>
-<script src="lib/bootstrap/js/jquery-3.4.1.min.js"></script>
-<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-</body>
-</html>
+    </body>
