@@ -1,8 +1,10 @@
 <?php
-  session_start();
-  if (isset($_SESSION['msg'])):
-      echo $_SESSION['msg'];
-  endif;
+    session_start();
+    if (isset($_SESSION['msg'])):
+        echo $_SESSION['msg'];
+    endif;
+
+    require 'config.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -171,16 +173,17 @@
                   <div class="panel-heading">
                         <div class="panel-title">Postar</div>
                   </div>
-                  <!-- <form action="upload.php" method="POST" enctype="multipart/form-data">
-                        <input class type="file" name="file" />
-                        <input type="submit" value="Enviar"/>
-                  </form> -->
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        <input type="file" name="cover" >
+                        <button type="submit">Submit</button>
+                    </form>
                </div>
             </div>
          </div>
          <div class="col-md-12 ml-auto mr-auto">
             <h3 class="text-center">Photo Album Viewer</h3>
-            <div id="viewer"></div>
+            <div id="viewer">
+            </div>
          </div>
          <div class="col-md-6 ml-auto mr-auto">
          <?php
@@ -197,10 +200,6 @@
                <th> Senha </th>
             </tr>
             <?php
-
-
-               require 'config.php'; 
-
 
                $perfil = $collection -> find ([]);
 
