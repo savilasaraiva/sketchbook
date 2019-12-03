@@ -38,7 +38,7 @@
           <h1 class="display-3">Olá, 
           <?php 
             if(isset($_SESSION['usuario'])){
-              echo $_SESSION['usuario'];
+              echo $_SESSION['nome'];
             }else {
               echo 'mundo!';
             }

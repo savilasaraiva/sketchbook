@@ -32,7 +32,7 @@
                             <i class="material-icons">person</i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Ig ou Email" required>
+                        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ig ou Email" required>
                         </div>
                         <div class="input-group">
                         <div class="input-group-prepend">
@@ -40,14 +40,14 @@
                             <i class="material-icons">lock_outline</i>
                             </span>
                         </div>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Senha" required>
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
                         </div>
                     </div>
                     <div class="footer text-center">
                         <div class="form-group">
                             <input type="submit" value="LOGIN" class="btn btn-primary btn-wd btn-lg">
                         </div>
-                        <a href="./cadPerfil.php" class="btn btn-primary btn-link btn-wd btn-lg">Cadastrar</a>
+                        <a href="./register.php" class="btn btn-primary btn-link btn-wd btn-lg">Cadastrar</a>
                     </div>
                     </form>                    
                 </div>

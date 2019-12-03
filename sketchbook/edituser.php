@@ -21,8 +21,8 @@
         <div class="row justify-content-center">
             <div class="col-md-6 mt-5">                
                 <form action="php/update.php" method="POST">
-                    <h2 class="text-cDigite">Edit User</h2>
-                    <a href="userlist.php" class="btn btn-success btn-block" >Go to User List</a>
+                    <h2 class="text-cDigite">Editar Usuário</h2>
+                    <a href="userlist.php" class="btn btn-success btn-block" >Voltar para a lista de usuários</a>
                     <input type="hidden" name="id" value="<?php echo $_GET["id"]; ?>">
                     <div class="form-group">
                         <label for="nome">Nome</label>

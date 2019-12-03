@@ -14,14 +14,13 @@
     <link href="./assets/css/material-kit.css?v=2.0.6" rel="stylesheet" />
     <link href="./assets/demo/demo.css" rel="stylesheet" />
 </head>
-<body>
-    <?php include 'topnav.php';?>
-
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6 mt-5">                
+<body class="login-page sidebar-collapse">
+    <div class="page-header header-filter" style="background-image: url('./assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+        <div class="container">
+            <!-- <div class="col-md-6 mt-5">                
                 <form action="php/register.php" method="POST">
                     <h2 class="text-center">Cadastrar</h2>
+                    <a href="login.php" class="btn btn-success btn-block" >Voltar para o login</a>
                     <div class="form-group">
                         <label for="nome">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
@@ -44,21 +43,57 @@
                     </div>
                     <input type="submit" value="Cadastrar" class="btn btn-primary btn-block">
                 </form>
+            </div> -->
+            <div class="row">
+                <div class="col-lg-6 col-md-8 ml-auto mr-auto">
+                    <div class="card card-nav-tabs">
+                        <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                        <div class="card-header card-header-primary text-center">
+                            <h4 class="card-title">Cadastrar</h4>
+                        </div>
+                        <div class="card-body ">
+                            <form action="php/register.php" method="POST">                                
+                                <div class="form-group">
+                                    <label for="nome">Nome</label>
+                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">E-mail</label>
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="Digite seu email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="username">Usuário</label>
+                                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Digite usuário">
+                                </div>
+                                <div class="form-group">
+                                    <label for="senha">Senha</label>
+                                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite senha">
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm">Confirme a senha</label>
+                                    <input type="password" class="form-control" id="confirm" name="confirm" placeholder="Repita a senha">
+                                </div>
+                                <input type="submit" value="Cadastrar" class="btn btn-success float-right">
+                                <a href="login.php" class="btn btn-default float-left" >Voltar para o login</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <footer class="footer">
-    <div class="container">
-        <div class="copyright float-center">
-        &copy;
-        <script>
-            document.write(new Date().getFullYear())
-        </script>, feito com <i class="material-icons">favorite</i> por
-        <a href="#DJS" target="_blank">DJS</a>.
+        <footer class="footer">
+        <div class="container">
+            <div class="copyright float-center">
+            &copy;
+            <script>
+                document.write(new Date().getFullYear())
+            </script>, feito com <i class="material-icons">favorite</i> por
+            <a href="#DJS" target="_blank">DJS</a>.
+            </div>
         </div>
+        </footer>
     </div>
-    </footer>
 
     <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
     <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>

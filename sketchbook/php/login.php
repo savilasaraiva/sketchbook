@@ -13,8 +13,14 @@
     try{
         $result = $manager->executeQuery($dbname, $query);
         $row = $result->toArray();
-        $user = $row[0]->username;
+
+        $id = $row[0]->_id;
+        $username = $row[0]->nome;
+        $user = $row[0]->usuario;
+        
+        $_SESSION['id'] = $id;
         $_SESSION['usuario'] = $user;
+        $_SESSION['nome'] = $username;
         header("Location: ../index.php");
     }   catch(MongoDB\Driver\Exception\Exception $e){
         die("Error Encountered: ".$e);
