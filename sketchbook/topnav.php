@@ -56,17 +56,21 @@
                 Wishlist
             </a>
             </li> -->
-            <?php echo $_SESSION['nome']; ?>
             <li class="dropdown nav-item">
             <a href="#pablo" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">
                 <div class="profile-photo-small">
-                <img src="./assets/img/faces/avatar.jpg" alt="Circle Image" class="rounded-circle img-fluid">
+                <img src="./assets/img/faces/dudda.jpg" alt="Circle Image" class="rounded-circle img-fluid">
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <h6 class="dropdown-header"><?php echo $_SESSION['nome']; ?></h6>
-                <a href="php/perfil.php?id='<?php echo $_SESSION['id']; ?>'" class="dropdown-item">Perfil</a>
-                <a href="php/delete.php?id='<?php echo $_SESSION['id']; ?>'" class="dropdown-item">Editar Perfil</a>
+                <a href="perfil.php" class="dropdown-item">Perfil</a>
+                <?php echo "<a href='edituser.php?id=".$_SESSION['id'].
+                        "&nome=".$_SESSION['nome'].
+                        "&email=".$_SESSION['email'].
+                        "&usuario=".$_SESSION['usuario'].
+                        "&senha=".$_SESSION['senha'].
+                        "' class='dropdown-item'>Editar Perfil</a>" ?>
                 <a href="php/logout.php" class="dropdown-item">Sair</a>
             </div>
             </li>
