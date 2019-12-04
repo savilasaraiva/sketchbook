@@ -56,5 +56,7 @@
     <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
     <!-- Control CDigite for Material Kit: parallax effects, scripts for the example pages etc -->
     <script src="./assets/js/material-kit.js?v=2.0.6" type="text/javascript"></script>
+
+    <?php include 'footer.php';?>
 </body>
 </html>

@@ -59,17 +59,6 @@
             ?>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-        <div class="copyright float-center">
-        &copy;
-        <script>
-            document.write(new Date().getFullYear())
-        </script>, feito com <i class="material-icons">favorite</i> por
-        <a href="#DJS" target="_blank">DJS</a>.
-        </div>
-    </div>
-    </footer>
     
     <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
     <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
@@ -81,5 +70,7 @@
     <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
     <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
     <script src="./assets/js/material-kit.js?v=2.0.6" type="text/javascript"></script>
+
+    <?php include 'footer.php';?>
 </body>
 </html>

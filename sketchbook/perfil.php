@@ -43,7 +43,7 @@
                   <h3 class="title"><?php echo $_SESSION['usuario'] ?></h3>
                   <h6><?php echo $_SESSION['nome'] ?></h6>
                   <p><a href="#pablo" class="btn btn-danger"><i class="material-icons">favorite</i> Seguindo</a></p>
-                  <a href="#pablo" class="btn btn-link desabled"><strong><?php echo '66'; ?></strong> Publicações</a>
+                  <a href="#pablo" class="btn btn-link disabled"><strong><?php echo '66'; ?></strong> Publicações</a>
                   <a href="#pablo" class="btn btn-link"><strong><?php echo '245'; ?></strong> Seguindo</a>
                   <a href="#pablo" class="btn btn-link"><strong><?php echo '1548'; ?></strong> Seguidores</a>
                 </div>
@@ -120,18 +120,6 @@
       </div>
     </div>    
 
-    <footer class="footer">
-    <div class="container">
-        <div class="copyright float-center">
-        &copy;
-        <script>
-            document.write(new Date().getFullYear())
-        </script>, feito com <i class="material-icons">favorite</i> por
-        <a href="#DJS" target="_blank">DJS</a>.
-        </div>
-    </div>
-    </footer>
-
     <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
     <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
     <script src="./assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
@@ -142,5 +130,8 @@
     <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
     <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
     <script src="./assets/js/material-kit.js?v=2.0.6" type="text/javascript"></script>
+
+    <?php include 'footer.php';?>
+
     </body>
 </html>
