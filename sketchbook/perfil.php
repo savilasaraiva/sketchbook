@@ -1,4 +1,19 @@
-<?php session_start();?>
+<?php session_start();
+
+  include 'php/config.php';
+
+  $id = '';
+
+  if(isset($_GET["id"])){
+    $id = $_GET["id"];
+
+    $collection = $col->test;
+
+    $item = $collection->findOne(array('_id' => new MongoDB\BSON\ObjectID($id)));
+
+  }
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -37,11 +52,11 @@
             <div class="col-md-6 ml-auto mr-auto">
               <div class="profile">
                 <div class="avatar">
-                  <img src="./assets/img/faces/dudda.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                  <img src="./assets/img/faces/<?php echo (isset($id) ? $item->usuario : $_SESSION['usuario'] );?>.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                 </div>
                 <div class="name">
-                  <h3 class="title"><?php echo $_SESSION['usuario'] ?></h3>
-                  <h6><?php echo $_SESSION['nome'] ?></h6>
+                  <h3 class="title"><?php echo ( isset($id) ? $item->usuario : $_SESSION['usuario'] ); ?></h3>
+                  <h6><?php echo ( isset($id) ? $item->nome : $_SESSION['nome'] ); ?></h6>
                   <p><a href="#pablo" class="btn btn-danger"><i class="material-icons">favorite</i> Seguindo</a></p>
                   <a href="#pablo" class="btn btn-link disabled"><strong><?php echo '66'; ?></strong> Publicações</a>
                   <a href="#pablo" class="btn btn-link"><strong><?php echo '245'; ?></strong> Seguindo</a>
