@@ -1,9 +1,0 @@
-<?php
-
-$conn = new Mongo();
-$q = $conn->server->gameQueue;
-$id = new MongoId("4d0b9c7a8b012fe287547157");
-$q->update(array("_id"=>$id),array('$push' => array("done_by","2")));
-
-
-?>
