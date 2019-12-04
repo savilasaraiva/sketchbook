@@ -10,7 +10,4 @@
 </div>
 </footer>
 
-<script src="./assets/js/plugins/typeahead.jquery.min.js" type="text/javascript"></script>
-<script src="./assets/js/plugins/typeahead.bundle.min.js" type="text/javascript"></script>
-<script src="./assets/js/plugins/bloodhound.min.js" type="text/javascript"></script>
 <script src="./assets/js/main.js" type="text/javascript"></script>

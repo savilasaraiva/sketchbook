@@ -28,9 +28,22 @@
 
   <body>
 
-    <?php include 'topnav.php';?>
+     <?php include 'topnav.php';
+        
+        /*  if(isset($_SESSION['success'])){
+           echo "<div class = 'alert alert-success'>".$_SESSION['success']."</div>"; 
+        }else if(isset($_SESSION['error'])){
+            echo "<div class = 'alert alert-danger'>".$_SESSION['error']."</div>"; 
+        }else if(isset($_SESSION['warning'])){
+            echo "<div class = 'alert alert-warning'>".$_SESSION['warning']."</div>"; 
+        }else if(isset($_SESSION['dark'])){
+            echo "<div class = 'alert alert-dark'>".$_SESSION['dark']."</div>"; 
+        }
+ */
+    ?> 
 
     <div class="container-fluid gedf-wrapper">
+                   
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
@@ -76,21 +89,20 @@
                                     <label class="sr-only" for="message">post</label>
                                     <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?"></textarea>
                                 </div>
-
                             </div>
                             <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
                                 <div class="form-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile">
+                                    <form method="POST" enctype="multipart/form-data" action="upload.php" class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customFile" name="arquivo">
                                         <label class="custom-file-label" for="customFile">Upload image</label>
-                                    </div>
+                                    </formm>
                                 </div>
                                 <div class="py-4"></div>
                             </div>
                         </div>
                         <div class="btn-toolbar justify-content-between">
                             <div class="btn-group">
-                                <button type="submit" class="btn btn-primary">share</button>
+                                <input type="submit" class="btn btn-primary" value="share" />
                             </div>
                             <div class="btn-group">
                                 <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -307,6 +319,12 @@
     <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
     <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
     <script src="./assets/js/material-kit.js?v=2.0.6" type="text/javascript"></script>
+   <!--  <script type="text/javascript">
+        	$("#alerta").show();
+            setTimeout(function () {
+            $("#alerta").hide();
+            }, 2000);
+    </script> -->
 
     <?php include 'footer.php';?>
 
