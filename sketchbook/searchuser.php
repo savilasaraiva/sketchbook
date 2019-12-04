@@ -7,12 +7,9 @@
 
     $collection = $col->test;
 
-    $rows = $collection->find(array( 'nome' => array (
-        '$regex' => $search)));
-    
-    foreach($rows as $row) {
-        $row->nome.'<br>';
-    }    
+    $rows = $collection->find(array( 'nome' => array ('$regex' => $search)));
+
+    $count = $collection->count(array( 'nome' => array ('$regex' => $search)));
 ?>
 
 <!doctype html>
@@ -42,23 +39,43 @@
         <div class="row">
             <div class="col-md-3">
             </div>
-            <div class="col-md-6 gedf-main">
-                <div class="card gedf-card">
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="mr-2">
-                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+            <div class="col-md-6 gedf-main">              
+                <div class="list-group">
+                    <?php
+
+                    if(empty($count)){
+                        echo '<div class="alert alert-danger">
+                                <div class="container">
+                                <div class="alert-icon">
+                                    <i class="material-icons">error_outline</i>
                                 </div>
-                                <div class="ml-2">
-                                    <div class="h5 m-0">@LeeCross</div>
-                                    <div class="h7 text-muted">Miracles Lee Cross</div>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                </button>
+                                <b>Alerta: </b> Nenhum perfil encontrado!
+                                </div>
+                            </div>';
+                    }else{
+                        foreach($rows as $row) {
+                            ?>
+                        <a class="list-group-item list-group-item-action list-group-item-dark acessarBtn" href="perfil.php?id=<?php echo $row->_id; ?>">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="mr-2">
+                                        <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                                    </div>
+                                    <div class="ml-2">
+                                        <div class="h5 m-0">@<?php echo $row->usuario; ?></div>
+                                        <div class="h7 text-muted"><?php echo $row->nome; ?></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </a>
+                    <?php
+                        }
+                    } 
+                            ?>
                 </div>
-
             </div>
             <div class="col-md-3">
             </div>

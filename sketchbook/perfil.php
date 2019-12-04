@@ -1,4 +1,24 @@
-<?php session_start();?>
+<?php 
+  session_start();
+
+  include 'php/config.php';
+
+  if(isset($_GET["id"])){
+    $id = $_GET["id"];
+
+    $collection = $col->test;
+
+    $item = $collection->findOne(array('_id' => new MongoDB\BSON\ObjectID($id)));
+
+  }else{
+    $id = $_SESSION["id"];
+
+    $collection = $col->test;
+
+    $item = $collection->findOne(array('_id' => new MongoDB\BSON\ObjectID($id)));
+  }
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -37,21 +57,21 @@
             <div class="col-md-6 ml-auto mr-auto">
               <div class="profile">
                 <div class="avatar">
-                  <img src="./assets/img/faces/dudda.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                  <img src="./assets/img/perfis/<?php echo $item->usuario ?>.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                 </div>
                 <div class="name">
-                  <h3 class="title"><?php echo $_SESSION['usuario'] ?></h3>
-                  <h6><?php echo $_SESSION['nome'] ?></h6>
+                  <h3 class="title"><?php echo $item->usuario ?></h3>
+                  <h6><?php echo $item->nome ?></h6>
                   <p><a href="#pablo" class="btn btn-danger"><i class="material-icons">favorite</i> Seguindo</a></p>
-                  <a href="#pablo" class="btn btn-link disabled"><strong><?php echo '66'; ?></strong> Publicações</a>
-                  <a href="#pablo" class="btn btn-link"><strong><?php echo '245'; ?></strong> Seguindo</a>
-                  <a href="#pablo" class="btn btn-link"><strong><?php echo '1548'; ?></strong> Seguidores</a>
+                  <a href="#pablo" class="btn btn-link disabled"><strong><?php echo sizeof((array)$item->publics) ?></strong> Publicações</a>
+                  <a href="#pablo" class="btn btn-link"><strong><?php echo sizeof((array)$item->seguindo) ?></strong> Seguindo</a>
+                  <a href="#pablo" class="btn btn-link"><strong><?php echo sizeof((array)$item->seguidores) ?></strong> Seguidores</a>
                 </div>
               </div>
             </div>
           </div>
           <div class="description text-center">
-            <p><?php echo $_SESSION['bio'] ?></p>
+            <p><?php echo $item->bio ?></p>
           </div>
           <div class="row">
             <div class="col-md-6 ml-auto mr-auto">

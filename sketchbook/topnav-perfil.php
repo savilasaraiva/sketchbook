@@ -10,12 +10,12 @@
         </button>
       </div>
       <div class="collapse navbar-collapse">
-        <form class="form-inline ml-auto">
+        <form class="form-inline ml-auto" method="GET" action="searchuser.php">
             <div class="form-group has-white">
-            <input type="text" class="form-control" placeholder="Buscar">
+                <input type="text" id="searchuser" name="searchuser" class="form-control" placeholder="Buscar">
             </div>
             <button type="submit" class="btn btn-white btn-raised btn-fab btn-round">
-            <i class="material-icons">search</i>
+                <i class="material-icons">search</i>
             </button>
         </form>
         <ul class="navbar-nav ml-auto">
