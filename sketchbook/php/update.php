@@ -5,6 +5,7 @@
     $id = $_POST["id"];
     $nome = $_POST["nome"];
     $email = $_POST["email"];
+    $bio = $_POST["bio"];
     $usuario = $_POST["usuario"];
     $senha = $_POST["senha"];
 
@@ -15,7 +16,12 @@
             'nome' => $nome, 
             'email' => $email, 
             'usuario' => $usuario, 
-            'senha' => $senha
+            'senha' => $senha,
+            'bio' => $bio,
+            'curtidas' => [],
+            'publics' => [],
+            'seguindo' => [],
+            'seguidores' => []
         ]);
         $result = $manager->executeBulkWrite($dbname, $bulk);
         header("Location: ../userlist.php");

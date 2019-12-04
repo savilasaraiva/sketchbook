@@ -1,4 +1,17 @@
-<?php session_start();?>
+<?php session_start();
+include 'php/config.php';
+
+if(isset($_GET["id"])){
+    $id = $_GET["id"];
+
+    $collection = $col->test;
+
+    $item = $collection->findOne(array('_id' => new MongoDB\BSON\ObjectID($id)));
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,19 +40,23 @@
                     <input type="hidden" name="id" value="<?php echo $_GET["id"]; ?>">
                     <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome"  value="<?php echo $_GET["nome"]; ?>" placeholder="Digite seu nome">
+                        <input type="text" class="form-control" id="nome" name="nome"  value="<?php echo $item->nome ?>" placeholder="Digite seu nome">
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail</label>
-                        <input type="text" class="form-control" id="email" name="email" value="<?php echo $_GET["email"]; ?>" placeholder="Digite seu email">
+                        <input type="text" class="form-control" id="email" name="email" value="<?php echo $item->email ?>" placeholder="Digite seu email">
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <input type="text" class="form-control" id="bio" name="bio" value="<?php echo $item->bio ?>" placeholder="Digite sua bio">
                     </div>
                     <div class="form-group">
                         <label for="usuario">Usuario</label>
-                        <input type="text" class="form-control" id="usuario" name="usuario" value="<?php echo $_GET["usuario"]; ?>" placeholder="Digite usuario">
+                        <input type="text" class="form-control" id="usuario" name="usuario" value="<?php echo $item->usuario ?>" placeholder="Digite usuario">
                     </div>
                     <div class="form-group">
                         <label for="senha">senha</label>
-                        <input type="password" class="form-control" id="senha" name="senha" value="<?php echo $_GET["senha"]; ?>" placeholder="Digite senha">
+                        <input type="password" class="form-control" id="senha" name="senha" value="<?php echo $item->senha ?>" placeholder="Digite senha">
                     </div>
                     <input type="submit" value="CONFIRMAR" class="btn btn-primary btn-block">
                 </form>

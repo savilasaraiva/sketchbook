@@ -62,10 +62,14 @@
                 <div class="name">
                   <h3 class="title"><?php echo $item->usuario ?></h3>
                   <h6><?php echo $item->nome ?></h6>
-                  <p><a href="#pablo" class="btn btn-danger"><i class="material-icons">favorite</i> Seguindo</a></p>
-                  <a href="#pablo" class="btn btn-link disabled"><strong><?php echo sizeof((array)$item->publics) ?></strong> Publicações</a>
-                  <a href="#pablo" class="btn btn-link"><strong><?php echo sizeof((array)$item->seguindo) ?></strong> Seguindo</a>
-                  <a href="#pablo" class="btn btn-link"><strong><?php echo sizeof((array)$item->seguidores) ?></strong> Seguidores</a>
+                  <?php 
+                    if(isset($_GET["id"])){ ?>
+                  <p><a href="#" class="btn btn-danger"><i class="material-icons">favorite</i> Seguindo</a></p>
+                    <?php } ?>
+                  <a href="#" class="btn btn-link disabled"><strong><?php echo sizeof((array)$item->publics) ?></strong> Publicações</a>
+                  <a href="#" class="btn btn-link"><strong><?php echo sizeof((array)$item->seguindo) ?></strong> Seguindo</a>
+                  <a href="#" class="btn btn-link"><strong><?php echo sizeof((array)$item->seguidores) ?></strong> Seguidores</a>
+                  <p><a href="#" class="btn btn-link disabled"><?php echo sizeof((array)$item->curtidas) ?> Recomendações</a></p>
                 </div>
               </div>
             </div>

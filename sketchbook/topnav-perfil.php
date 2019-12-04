@@ -29,10 +29,6 @@
               <h6 class="dropdown-header"><?php echo $_SESSION['nome']; ?></h6>
                 <a href="perfil.php" class="dropdown-item">Perfil</a>
                 <?php echo "<a href='edituser.php?id=".$_SESSION['id'].
-                        "&nome=".$_SESSION['nome'].
-                        "&email=".$_SESSION['email'].
-                        "&usuario=".$_SESSION['usuario'].
-                        "&senha=".$_SESSION['senha'].
                         "' class='dropdown-item'>Editar Perfil</a>" ?>
                 <a href="php/logout.php" class="dropdown-item">Sair</a>
             </div>

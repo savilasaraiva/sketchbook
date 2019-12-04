@@ -43,10 +43,6 @@
                         "<td>".$row->email."</td>".
                         "<td>".$row->usuario."</td>".
                         "<td><a class='btn btn-info' href='edituser.php?id=".$row->_id.
-                        "&nome=".$row->nome.
-                        "&email=".$row->email.
-                        "&usuario=".$row->usuario.
-                        "&senha=".$row->senha.
                         "'>Editar</a> ".
                         "<a class='btn btn-danger' href='php/delete.php?id=".$row->_id."'>Deletar</a></td>".
                     "</tr>";
