@@ -63,8 +63,11 @@
                   <h3 class="title"><?php echo $item->usuario ?></h3>
                   <h6><?php echo $item->nome ?></h6>
                   <?php 
-                    if(isset($_GET["id"])){ ?>
-                  <p><a href="#" class="btn btn-danger"><i class="material-icons">favorite</i> Seguindo</a></p>
+                    if(isset($_GET["id"]) && $_GET["id"]!= $_SESSION["id"]){ ?>
+                  <p>
+                    <a href="#" class="btn btn-danger"><i class="material-icons">favorite</i> Seguindo</a>
+                    <a href="#" class="btn btn-warning"><i class="material-icons">star_border</i> Recomendar</a>
+                  </p>
                     <?php } ?>
                   <a href="#" class="btn btn-link disabled"><strong><?php echo sizeof((array)$item->publics) ?></strong> Publicações</a>
                   <a href="#" class="btn btn-link"><strong><?php echo sizeof((array)$item->seguindo) ?></strong> Seguindo</a>

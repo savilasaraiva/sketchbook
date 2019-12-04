@@ -12,7 +12,11 @@
         'nome' => $nome, 
         'email' => $email, 
         'usuario' => $usuario, 
-        'senha' => $senha
+        'senha' => $senha,
+        'curtidas' => [],
+        'publics' => [],
+        'seguindo' => [],
+        'seguidores' => []
     ];
 
     try{
