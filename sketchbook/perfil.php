@@ -66,7 +66,7 @@
                     if(isset($_GET["id"]) && $_GET["id"]!= $_SESSION["id"]){ ?>
                   <p>
                     <a href="#" class="btn btn-danger"><i class="material-icons">favorite</i> Seguindo</a>
-                    <a href="#" class="btn btn-warning"><i class="material-icons">star_border</i> Recomendar</a>
+                    <a href="php/curtidas.php?id=<?php echo $id ?>&idUser=<?php echo $_SESSION["id"] ?>" class="btn btn-warning"><i class="material-icons">star_border</i> Recomendar</a>
                   </p>
                     <?php } ?>
                   <a href="#" class="btn btn-link disabled"><strong><?php echo sizeof((array)$item->publics) ?></strong> Publicações</a>
