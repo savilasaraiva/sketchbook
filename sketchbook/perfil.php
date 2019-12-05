@@ -104,14 +104,14 @@
               foreach ((array)$item->publics as $key => $value) {
                 if($key%4 == 0 || $key==0) echo '<div class="row">';
                 if($key==0){
-                  echo '<div class="col-sm-3">';
-                } else if($key%2 == 0) echo '<div class="col-sm-3 ml-auto">';
+                  echo '<div class="col-sm-4">';
+                } else echo '<div class="col-sm-4 ml-auto">';
                 
             ?>             
                 <img src="./assets/img/publics/<?php echo $value; ?>" class="img-raised rounded img-fluid">
             <?php
-              if($key%2 == 0 || $key==0) echo '</div>';
-              if($key%4 == 0 || $key==0) echo '</div>';
+              echo '</div>';
+              if($key%4 == 0 && $key!=0) echo '</div>';
               }
             ?>
             </div>
