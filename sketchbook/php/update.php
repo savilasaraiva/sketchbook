@@ -17,11 +17,7 @@
             'email' => $email, 
             'usuario' => $usuario, 
             'senha' => $senha,
-            'bio' => $bio,
-            'curtidas' => [],
-            'publics' => [],
-            'seguindo' => [],
-            'seguidores' => []
+            'bio' => $bio
         ]);
         $result = $manager->executeBulkWrite($dbname, $bulk);
         header("Location: ../userlist.php");
