@@ -22,7 +22,7 @@
           <li class="dropdown nav-item">
             <a href="#" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">
                 <div class="profile-photo-small">
-                    <img src="./assets/img/faces/dudda.jpg" alt="Image" class="rounded-circle img-fluid">
+                    <img src="./assets/img/perfis/<?php echo $_SESSION['usuario'] ?>.jpg" alt="Image" class="rounded-circle img-fluid">
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">

@@ -13,13 +13,17 @@
   try {
       $bulk->update(
         array("_id"=>$idUser),
-        array('$addToSet' => array("seguidores" => $user))
+        array('$pull' => 
+            array(
+              "seguidores" => $user
+            )
+        )
       );
       $result = $manager->executeBulkWrite($dbname, $bulk);
 
       $bulk2->update(
         array("_id"=>$idUser2),
-        array('$addToSet' => array("seguindo" => $id))
+        array('$pull' => array("seguindo" => $id))
       );
       $result2 = $manager->executeBulkWrite($dbname, $bulk2);
 

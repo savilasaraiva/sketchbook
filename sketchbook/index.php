@@ -28,22 +28,9 @@
 
   <body>
 
-     <?php include 'topnav.php';
-        
-        /*  if(isset($_SESSION['success'])){
-           echo "<div class = 'alert alert-success'>".$_SESSION['success']."</div>"; 
-        }else if(isset($_SESSION['error'])){
-            echo "<div class = 'alert alert-danger'>".$_SESSION['error']."</div>"; 
-        }else if(isset($_SESSION['warning'])){
-            echo "<div class = 'alert alert-warning'>".$_SESSION['warning']."</div>"; 
-        }else if(isset($_SESSION['dark'])){
-            echo "<div class = 'alert alert-dark'>".$_SESSION['dark']."</div>"; 
-        }
- */
-    ?> 
+     <?php include 'topnav.php'; ?> 
 
     <div class="container-fluid gedf-wrapper">
-                   
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
@@ -68,59 +55,81 @@
                 </div>
             </div>
             <div class="col-md-6 gedf-main">
-
-                <!--- \\\\\\\Post-->
-                <div class="card gedf-card">
-                    <div class="card-header">
-                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Make
-                                    a publication</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Images</a>
-                            </li>
-                        </ul>
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                        <h4>Imagens</h4>                        
                     </div>
-                    <div class="card-body">
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
-                                <div class="form-group">
-                                    <label class="sr-only" for="message">post</label>
-                                    <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?"></textarea>
-                                </div>
+                    <div class="card-body ">
+                        <?php
+                            if(isset($_SESSION['success'])){
+                                echo 
+                                '<div id="alert-message" class="alert alert-success">
+                                    <div class="container">
+                                    <div class="alert-icon">
+                                        <i class="material-icons">error_outline</i>
+                                    </div>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                    </button>
+                                    <b>Alerta: </b> '.$_SESSION['success'].'
+                                    </div>
+                                </div>';
+                            }else if(isset($_SESSION['error'])){
+                                echo 
+                                    '<div id="alert-message" class="alert alert-danger">
+                                        <div class="container">
+                                        <div class="alert-icon">
+                                            <i class="material-icons">error_outline</i>
+                                        </div>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                        </button>
+                                        <b>Alerta: </b> '.$_SESSION['error'].'
+                                        </div>
+                                    </div>';
+                            }else if(isset($_SESSION['warning'])){
+                                echo 
+                                    '<div id="alert-message" class="alert alert-warning">
+                                        <div class="container">
+                                        <div class="alert-icon">
+                                            <i class="material-icons">error_outline</i>
+                                        </div>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                        </button>
+                                        <b>Alerta: </b> '.$_SESSION['warning'].'
+                                        </div>
+                                    </div>';
+                            }else if(isset($_SESSION['dark'])){
+                                echo 
+                                    '<div id="alert-message" class="alert alert-dark">
+                                        <div class="container">
+                                        <div class="alert-icon">
+                                            <i class="material-icons">error_outline</i>
+                                        </div>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                        </button>
+                                        <b>Alerta: </b> '.$_SESSION['dark'].'
+                                        </div>
+                                    </div>';
+                            }
+                        
+                        ?>
+                        <form method="POST" enctype="multipart/form-data" action="php/upload.php" class="custom-file">
+                            <div class="form-group">
+                                <input type="file" class="custom-file-input" id="customFile" name="arquivo">
+                                <label class="custom-file-label" for="customFile"><i class="material-icons">add_photo_alternate</i></label>
                             </div>
-                            <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
-                                <div class="form-group">
-                                    <form method="POST" enctype="multipart/form-data" action="upload.php" class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" name="arquivo">
-                                        <label class="custom-file-label" for="customFile">Upload image</label>
-                                    </formm>
-                                </div>
-                                <div class="py-4"></div>
-                            </div>
-                        </div>
-                        <div class="btn-toolbar justify-content-between">
+                            <br/>
                             <div class="btn-group">
-                                <input type="submit" class="btn btn-primary" value="share" />
+                                <input type="submit" class="btn btn-primary" value="Publicar" />
                             </div>
-                            <div class="btn-group">
-                                <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <i class="fa fa-globe"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="#"><i class="fa fa-globe"></i> Public</a>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-users"></i> Friends</a>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Just me</a>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
-                <!-- Post /////-->
 
-                <!--- \\\\\\\Post-->
                 <div class="card gedf-card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
@@ -166,10 +175,7 @@
                         <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                     </div>
                 </div>
-                <!-- Post /////-->
 
-
-                <!--- \\\\\\\Post-->
                 <div class="card gedf-card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
@@ -227,10 +233,7 @@
                         <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                     </div>
                 </div>
-                <!-- Post /////-->
 
-
-                <!--- \\\\\\\Post-->
                 <div class="card gedf-card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
@@ -279,9 +282,6 @@
                         <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                     </div>
                 </div>
-                <!-- Post /////-->
-
-
 
             </div>
             <div class="col-md-3">
@@ -319,12 +319,13 @@
     <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
     <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
     <script src="./assets/js/material-kit.js?v=2.0.6" type="text/javascript"></script>
-   <!--  <script type="text/javascript">
-        	$("#alerta").show();
-            setTimeout(function () {
-            $("#alerta").hide();
-            }, 2000);
-    </script> -->
+
+    <script type="text/javascript">
+        $("#alert-message").fadeTo(2000, 500).slideUp(500, function(){
+            $(this).slideUp(500);
+            $(this).remove();
+        });
+    </script>
 
     <?php include 'footer.php';?>
 

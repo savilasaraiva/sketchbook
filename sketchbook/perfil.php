@@ -3,6 +3,10 @@
 
   include 'php/config.php';
 
+  function searchSegRec($value, $array){ 
+    return(in_array($value, $array));
+  } 
+  
   if(isset($_GET["id"])){
     $id = $_GET["id"];
 
@@ -10,12 +14,16 @@
 
     $item = $collection->findOne(array('_id' => new MongoDB\BSON\ObjectID($id)));
 
+    $isSeg = searchSegRec($_SESSION["id"], (array)$item->seguidores);
+    $isCut = searchSegRec($_SESSION["id"], (array)$item->curtidas);
+
   }else{
     $id = $_SESSION["id"];
 
     $collection = $col->test;
 
     $item = $collection->findOne(array('_id' => new MongoDB\BSON\ObjectID($id)));
+
   }
 
 ?>
@@ -62,13 +70,24 @@
                 <div class="name">
                   <h3 class="title"><?php echo $item->usuario ?></h3>
                   <h6><?php echo $item->nome ?></h6>
-                  <?php 
-                    if(isset($_GET["id"]) && $_GET["id"]!= $_SESSION["id"]){ ?>
                   <p>
-                    <a href="php/seguidores.php?id=<?php echo $id ?>&idUser=<?php echo $_SESSION["id"] ?>" class="btn btn-danger"><i class="material-icons">favorite</i> Seguindo</a>
+                  <?php 
+                    if(isset($_GET["id"]) && $_GET["id"]!= $_SESSION["id"]){ 
+                      
+                      if($isSeg){?>
+                    <a href="php/rvseguidores.php?id=<?php echo $id ?>&idUser=<?php echo $_SESSION["id"] ?>" class="btn btn-danger"><i class="material-icons">favorite</i> Seguindo</a>
+                <?php }else{ ?>
+                    <a href="php/seguidores.php?id=<?php echo $id ?>&idUser=<?php echo $_SESSION["id"] ?>" class="btn btn-danger"><i class="material-icons">favorite_border</i> Seguir</a>
+                <?php        
+                      }
+                      if($isCut){?>
+                    <a href="php/rvcurtidas.php?id=<?php echo $id ?>&idUser=<?php echo $_SESSION["id"] ?>" class="btn btn-warning"><i class="material-icons">star</i> Recomendado</a>
+                <?php }else{ ?>
                     <a href="php/curtidas.php?id=<?php echo $id ?>&idUser=<?php echo $_SESSION["id"] ?>" class="btn btn-warning"><i class="material-icons">star_border</i> Recomendar</a>
+                <?php        
+                      }
+                    } ?>
                   </p>
-                    <?php } ?>
                   <a href="#" class="btn btn-link disabled"><strong><?php echo sizeof((array)$item->publics) ?></strong> Publicações</a>
                   <a href="#" class="btn btn-link"><strong><?php echo sizeof((array)$item->seguindo) ?></strong> Seguindo</a>
                   <a href="#" class="btn btn-link"><strong><?php echo sizeof((array)$item->seguidores) ?></strong> Seguidores</a>
@@ -80,68 +99,23 @@
           <div class="description text-center">
             <p><?php echo $item->bio ?></p>
           </div>
-          <div class="row">
-            <div class="col-md-6 ml-auto mr-auto">
-              <div class="profile-tabs">
-                <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
-                      <i class="material-icons">camera</i> Studio
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#works" role="tab" data-toggle="tab">
-                      <i class="material-icons">palette</i> Work
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                      <i class="material-icons">favorite</i> Favorite
-                    </a>
-                  </li>
-                </ul>
-              </div>
+          <div class="images">            
+            <?php
+              foreach ((array)$item->publics as $key => $value) {
+                if($key%4 == 0 || $key==0) echo '<div class="row">';
+                if($key==0){
+                  echo '<div class="col-sm-3">';
+                } else if($key%2 == 0) echo '<div class="col-sm-3 ml-auto">';
+                
+            ?>             
+                <img src="./assets/img/publics/<?php echo $value; ?>" class="img-raised rounded img-fluid">
+            <?php
+              if($key%2 == 0 || $key==0) echo '</div>';
+              if($key%4 == 0 || $key==0) echo '</div>';
+              }
+            ?>
             </div>
-          </div>
-          <div class="tab-content tab-space">
-            <div class="tab-pane active text-center gallery" id="studio">
-              <div class="row">
-                <div class="col-md-3 ml-auto">
-                  <img src="../assets/img/examples/studio-1.jpg" class="rounded">
-                  <img src="../assets/img/examples/studio-2.jpg" class="rounded">
-                </div>
-                <div class="col-md-3 mr-auto">
-                  <img src="../assets/img/examples/studio-5.jpg" class="rounded">
-                  <img src="../assets/img/examples/studio-4.jpg" class="rounded">
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane text-center gallery" id="works">
-              <div class="row">
-                <div class="col-md-3 ml-auto">
-                  <img src="../assets/img/examples/olu-eletu.jpg" class="rounded">
-                  <img src="../assets/img/examples/clem-onojeghuo.jpg" class="rounded">
-                  <img src="../assets/img/examples/cynthia-del-rio.jpg" class="rounded">
-                </div>
-                <div class="col-md-3 mr-auto">
-                  <img src="../assets/img/examples/mariya-georgieva.jpg" class="rounded">
-                  <img src="../assets/img/examples/clem-onojegaw.jpg" class="rounded">
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane text-center gallery" id="favorite">
-              <div class="row">
-                <div class="col-md-3 ml-auto">
-                  <img src="../assets/img/examples/mariya-georgieva.jpg" class="rounded">
-                  <img src="../assets/img/examples/studio-3.jpg" class="rounded">
-                </div>
-                <div class="col-md-3 mr-auto">
-                  <img src="../assets/img/examples/clem-onojeghuo.jpg" class="rounded">
-                  <img src="../assets/img/examples/olu-eletu.jpg" class="rounded">
-                  <img src="../assets/img/examples/studio-1.jpg" class="rounded">
-                </div>
-              </div>
-            </div>
+            <div class="space-50"></div>
           </div>
         </div>
       </div>
