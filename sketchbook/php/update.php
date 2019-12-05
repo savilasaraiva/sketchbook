@@ -20,7 +20,7 @@
             'bio' => $bio
         ]);
         $result = $manager->executeBulkWrite($dbname, $bulk);
-        header("Location: ../userlist.php");
+        header("Location: ../perfil.php");
     }catch(MongoDB\Driver\Exception\Exception $e){
         die("Error Encountered ".$e);
     }
