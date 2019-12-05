@@ -1,10 +1,10 @@
 <?php session_start();
 
-  if(isset($_SESSION['usuario'])){
-    
-  }else {
-    header("Location: login.php");
-  }
+    if(isset($_SESSION['usuario'])){
+
+    }else {
+        header("Location: login.php");
+    }
 
     include 'php/config.php';
 
@@ -13,7 +13,7 @@
 ?>
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -28,11 +28,10 @@
     <link href="./assets/css/material-kit.css?v=2.0.6" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="./assets/demo/demo.css" rel="stylesheet" />
-  </head>
+</head>
 
-  <body>
-
-     <?php include 'topnav.php'; ?> 
+<body>
+    <?php include 'topnav.php'; ?> 
 
     <div class="container-fluid gedf-wrapper">
         <div class="row">
